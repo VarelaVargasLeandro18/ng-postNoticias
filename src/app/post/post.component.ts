@@ -10,22 +10,17 @@ import { PostService } from './post.service';
 export class PostComponent implements OnInit {
 
   @Input() post? : Post;
+  @Input() index : number = -1;
 
   constructor(
     private postService : PostService
   ) { }
 
   ngOnInit(): void {
-    console.log(this.post);
   }
 
   onDelete() : void {
-
-    let index : number = this.postService.getPosts().findIndex ( (element) => element === this.post );
-    
-    if ( index === -1 ) return
-
-    let deleted : Post = this.postService.deletePost(index);
+    this.postService.deletePost(this.index);
   }
 
 }
