@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post } from './post.model';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-post',
@@ -8,12 +9,23 @@ import { Post } from './post.model';
 })
 export class PostComponent implements OnInit {
 
-  @Input() post : Post | null = null;
+  @Input() post? : Post;
 
-  constructor() { }
+  constructor(
+    private postService : PostService
+  ) { }
 
   ngOnInit(): void {
     console.log(this.post);
+  }
+
+  onDelete() : void {
+
+    let index : number = this.postService.getPosts().findIndex ( (element) => element === this.post );
+    
+    if ( index === -1 ) return
+
+    let deleted : Post = this.postService.deletePost(index);
   }
 
 }

@@ -1,6 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Post } from "./post.model";
 
+/*
+    Un service permite crear una comunicación entre diferentes
+    componentes.
+*/
+
 @Injectable( {providedIn: 'root'} )
 export class PostService {
     
