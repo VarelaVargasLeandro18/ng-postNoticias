@@ -7,6 +7,28 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostComponent } from './post/post.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { AuthComponent } from './auth/auth.component';
+import { RouterModule, Routes } from '@angular/router';
+
+//Agregamos rutas:
+const routes : Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'post-list'
+  },
+  {
+    path: 'post-list',
+    component: PostListComponent
+  },
+  {
+    path: 'auth',
+    component: AuthComponent
+  },
+  {
+    path: 'post-add',
+    component: PostEditComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -18,7 +40,8 @@ import { AuthComponent } from './auth/auth.component';
     AuthComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
