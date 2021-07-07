@@ -53,4 +53,8 @@ export class PostService {
         return this.listOfPosts[index];
     }
 
+    likePost (index: number) : void {
+        this.listOfPosts[index].numberOfLikes++;
+    }
+
 }

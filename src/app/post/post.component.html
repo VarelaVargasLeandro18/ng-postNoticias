@@ -4,11 +4,13 @@
 <p> {{post?.dateTimeCreated}} </p>
 <img    src= {{post?.imagePath}}
         class="img-fluid">
-<p>Likes: {{post?.numberOfLikes}}</p>
+
 <div class="mt-1">
         <button (click)="onEdit()" class="btn mr-1 btn-primary">Edit</button>
         <button class="btn btn-secondary" (click)=onDelete() >Delete</button>
-        
 </div>
-
+<div class="mt-2">
+        <button (click)="likePost()" class="btn btn-warning mt-2">Like</button>
+        <small class="form-text text-muted">Number of Likes: {{post?.numberOfLikes}}</small>
+</div>
 <hr>
