@@ -5,6 +5,8 @@ export class Post {
                 public description : string,
                 public imagePath : string,
                 public author: string,
-                public dateTimeCreated : Date ) {}
+                public dateTimeCreated : Date,
+                public numberOfLikes : number = 0
+    ) {}
 
 }

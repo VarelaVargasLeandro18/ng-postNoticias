@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Post } from '../post/post.model';
 import { PostService } from '../post/post.service';
 
@@ -13,28 +13,47 @@ export class PostEditComponent implements OnInit {
 
   // Null | FormGroup => parecido a '?'
   form! : FormGroup;
+  index : number = -1;
+  editMode : boolean = false;
 
   constructor(
     private postService : PostService,
-    private router : Router
+    private router : Router,
+    private route : ActivatedRoute
     ) { }
 
   ngOnInit(): void {
+    let title = '';
+    let description = '';
+    let imgPath = '';
+
+    this.route.params.subscribe( (params: Params) => {
+      if ( params['index'] ) {
+        this.index = params['index'];
+        const post = this.postService.getPost(this.index);
+        title = post.title;
+        description = post.description;
+        imgPath = post.imagePath;
+
+        this.editMode = true;
+      }
+    } );
+
     // Creamos el FormGroup
     this.form = new FormGroup({
       title: new FormControl(
-        null, 
+        title, 
         [Validators.required, Validators.maxLength(10)]
       ),
       description: new FormControl(
-        null,
+        description,
         [Validators.required]
       ),
       imagePath: new FormControl(
-        null,
+        imgPath,
         [Validators.required]
       )
-    })
+    });
   }
 
   onSubmit() : void {
@@ -47,10 +66,15 @@ export class PostEditComponent implements OnInit {
       description, 
       imagePath,
       'test@test.com',
-      new Date()  
+      new Date(),
+      -1 /* Debe cambiar */  
     );
 
-    this.postService.addPost(post);
+    if (!this.editMode) 
+      this.postService.addPost(post);
+    else
+      this.postService.updatePost(this.index, post);
+      
     this.form.reset();
     this.router.navigate([`post-list`]);
   }

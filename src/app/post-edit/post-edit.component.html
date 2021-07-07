@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h3>Post Add</h3>
+            <h3 [hidden] = "editMode">Post Add</h3>
+            <h3 [hidden] = "!editMode">Post Edit</h3>
             <form  [formGroup] = "form" (ngSubmit) = "onSubmit()" >
                 <div class="form-group">
             
@@ -45,7 +46,9 @@
                                 placeholder="Enter Title">
                     </label>
                     <small class="form-text text-muted">Enter an Image Path.</small>
-                    <img class="img-fluid" src="{{form.value.imagePath}}" alt="">
+                    <div class="mt-1 col-3">
+                        <img class="img-fluid" src="{{form.value.imagePath}}" alt="">
+                    </div>
                     <small
                         [hidden]= "form.controls['imagePath'].valid"
                         class="form-text text-danger text-uppercase">

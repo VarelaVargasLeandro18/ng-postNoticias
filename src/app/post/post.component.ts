@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Post } from './post.model';
 import { PostService } from './post.service';
 
@@ -13,7 +14,8 @@ export class PostComponent implements OnInit {
   @Input() index : number = -1;
 
   constructor(
-    private postService : PostService
+    private postService : PostService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -21,6 +23,10 @@ export class PostComponent implements OnInit {
 
   onDelete() : void {
     this.postService.deletePost(this.index);
+  }
+
+  onEdit() : void {
+    this.router.navigate([`post-edit`, this.index]);
   }
 
 }

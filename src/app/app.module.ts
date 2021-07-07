@@ -30,7 +30,7 @@ const routes : Routes = [
     component: PostEditComponent
   },
   {
-    path: 'post-edit',
+    path: 'post-edit/:index',
     component: PostEditComponent
   }
 ];

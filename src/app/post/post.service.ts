@@ -49,4 +49,8 @@ export class PostService {
         this.listOfPosts[index] = post;
     }
 
+    getPost( index: number ) : Post {
+        return this.listOfPosts[index];
+    }
+
 }
