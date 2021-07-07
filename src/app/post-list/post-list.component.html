@@ -1,5 +1,11 @@
-<h1>Latest Posts...</h1>
-<app-post 
-            *ngFor = "let post of listOfPosts; let i = index"
-            [post] = post
-            [index] = i></app-post>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <h1>Latest Posts...</h1>
+            <app-post
+                        *ngFor = "let post of listOfPosts; let i = index"
+                        [post] = post
+                        [index] = i></app-post>
+        </div>
+    </div>
+</div>

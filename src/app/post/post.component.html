@@ -4,5 +4,10 @@
 <p> {{post?.dateTimeCreated}} </p>
 <img    src= {{post?.imagePath}}
         class="img-fluid">
-<button>Edit</button> | <button (click)=onDelete() >Delete</button>
+
+<div class="mt-1">
+        <button class="btn mr-1 btn-primary">Edit</button>
+        <button class="btn btn-secondary" (click)=onDelete() >Delete</button>
+</div>
+
 <hr>
