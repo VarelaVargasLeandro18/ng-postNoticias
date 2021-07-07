@@ -1,7 +1,7 @@
-<h2 id={{post?.title}}> {{post?.title}} </h2>
+<h2 id={{post?.title}}> {{post?.title | uppercase}} </h2>
 <p> {{post?.description}} </p>
 <p> {{post?.author}} </p>
-<p> {{post?.dateTimeCreated}} </p>
+<p>Date: {{post?.dateTimeCreated | date:"dd/MM/yyyy hh:mm" }} </p>
 <img    src= {{post?.imagePath}}
         class="img-fluid">
 

@@ -13,15 +13,21 @@
                 <a class="nav-link active" routerLink="post-list">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="post-add">Add Post</a>
+                <a class="nav-link active" routerLink="post-add">Add Post</a>
             </li>
         </ul>
         <ul class="navbar-nav navbar-right ml-auto align-items-center">
-            <li>
-                <a routerLink="auth" class="nav-link">Sign Up</a>
+            <li class="nav-item">
+                <a (click)="onSave()" class="nav-link active" routerLink="post-list">Save</a>
+            </li>
+            <li class="nav-item">
+                <a (click)="onFetch()" class="nav-link active" routerLink="post-list">Fetch</a>
             </li>
             <li>
-                <a routerLink="auth" class="nav-link">Log In</a>
+                <a routerLink="auth" class="nav-link active">Sign Up</a>
+            </li>
+            <li>
+                <a routerLink="auth" class="nav-link active">Log In</a>
             </li>
         </ul>
     </div>
