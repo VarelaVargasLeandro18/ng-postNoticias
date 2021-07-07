@@ -45,6 +45,7 @@
                                 placeholder="Enter Title">
                     </label>
                     <small class="form-text text-muted">Enter an Image Path.</small>
+                    <img class="img-fluid" src="{{form.value.imagePath}}" alt="">
                     <small
                         [hidden]= "form.controls['imagePath'].valid"
                         class="form-text text-danger text-uppercase">

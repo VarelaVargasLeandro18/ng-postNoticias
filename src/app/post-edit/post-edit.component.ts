@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Post } from '../post/post.model';
+import { PostService } from '../post/post.service';
 
 @Component({
   selector: 'app-post-edit',
@@ -11,7 +14,10 @@ export class PostEditComponent implements OnInit {
   // Null | FormGroup => parecido a '?'
   form! : FormGroup;
 
-  constructor() { }
+  constructor(
+    private postService : PostService,
+    private router : Router
+    ) { }
 
   ngOnInit(): void {
     // Creamos el FormGroup
@@ -32,7 +38,21 @@ export class PostEditComponent implements OnInit {
   }
 
   onSubmit() : void {
-    console.log();
+    const title = this.form.value.title;
+    const description = this.form.value.description;
+    const imagePath = this.form.value.imagePath;
+
+    const post = new Post( 
+      title, 
+      description, 
+      imagePath,
+      'test@test.com',
+      new Date()  
+    );
+
+    this.postService.addPost(post);
+    this.form.reset();
+    this.router.navigate([`post-list`]);
   }
 
 }
